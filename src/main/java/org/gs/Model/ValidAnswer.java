@@ -1,19 +1,35 @@
 package org.gs.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
-import org.bson.types.ObjectId;
 
 public class ValidAnswer extends PanacheMongoEntity {
 
-    public ObjectId id;
-    public String series;
-    public int correctAnswer;
+    @JsonProperty("series")
+    private String series;
+    @JsonProperty("correctAnswer")
+    private int correctAnswer;
 
-    public ValidAnswer() {
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    public void setCorrectAnswer(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public int getCorrectAnswer() {
+        return correctAnswer;
     }
 
     public ValidAnswer(String series, int correctAnswer) {
         this.series = series;
         this.correctAnswer = correctAnswer;
     }
+
+    public ValidAnswer() {}
 }

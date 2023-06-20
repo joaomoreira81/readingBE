@@ -1,14 +1,12 @@
-package org.gs.Model;
+package org.gs.model;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
-import org.bson.types.ObjectId;
 
 import java.util.Date;
 import java.util.Map;
 
 public class Result extends PanacheMongoEntity {
 
-    private ObjectId id;
     private String studentId;
     private Map<String, AnswerStatus> results;
     private Date date;
@@ -27,6 +25,10 @@ public class Result extends PanacheMongoEntity {
 
     public Map<String, AnswerStatus> getResults() {
         return results;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public Result(String studentId, Map<String, AnswerStatus> results) {

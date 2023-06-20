@@ -1,16 +1,15 @@
-package org.gs.Model;
+package org.gs.model;
 
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
-import org.bson.types.ObjectId;
 
 import java.util.Date;
+import java.util.List;
 
 public class SerieAnswer extends PanacheMongoEntity {
 
-    private ObjectId id;
     private String studentId;
     private String serie;
-    private int answer;
+    private List<Answer> answer;
     private Date date;
 
     public void setStudentId(String studentId) {
@@ -21,11 +20,19 @@ public class SerieAnswer extends PanacheMongoEntity {
         this.serie = serie;
     }
 
-    public void setAnswer(int answer) {
+    public void setAnswer(List<Answer> answer) {
         this.answer = answer;
     }
 
     public SerieAnswer() {
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return this.date;
     }
 
     public String getStudentId() {
@@ -36,11 +43,11 @@ public class SerieAnswer extends PanacheMongoEntity {
         return serie;
     }
 
-    public int getAnswer() {
+    public List<Answer> getAnswer() {
         return answer;
     }
 
-    public SerieAnswer(String studentId, String serie, int answer) {
+    public SerieAnswer(String studentId, String serie, List<Answer> answer) {
         this.studentId = studentId;
         this.serie = serie;
         this.answer = answer;

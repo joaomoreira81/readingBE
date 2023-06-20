@@ -1,10 +1,9 @@
-package org.gs.Service;
+package org.gs.service;
 
-import org.gs.Model.AnswerStatus;
-import org.gs.Model.SerieAnswer;
-import org.gs.Model.ValidAnswer;
-import org.gs.Repository.AnswerRepository;
-import org.gs.Repository.ValidAnswerRepository;
+import org.gs.model.AnswerStatus;
+import org.gs.model.SerieAnswer;
+import org.gs.repository.AnswerRepository;
+import org.gs.repository.ValidAnswerRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,13 +23,18 @@ public class CalculateResults {
         List<SerieAnswer> answers = answerRepository.findByStudent(studentId);
         Map<String, AnswerStatus> results = new HashMap<>();
         answers.forEach(a -> {
-            if(validAnswerRepository.findOrderedToMap().get(a.getSerie()) == a.getAnswer()) {
+            if(calculateSerie(a,validAnswerRepository.findOrderedToMap().get(a.getSerie()) )) {
                 results.put(a.getSerie(),AnswerStatus.OK);
             } else {
                 results.put(a.getSerie(),AnswerStatus.NOK);
             }
         });
         return results;
+    }
+
+    public boolean calculateSerie(SerieAnswer answer, List<Integer> correcAnswer) {
+        return answer.getAnswer().stream().filter(a ->
+                a.isSelected() && correcAnswer.contains(a.getPosition())).count() == 2;
     }
 
 

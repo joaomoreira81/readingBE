@@ -1,7 +1,7 @@
-package org.gs.Controller;
+package org.gs.controller;
 
-import org.gs.Model.SerieAnswer;
-import org.gs.Repository.AnswerRepository;
+import org.gs.model.SerieAnswer;
+import org.gs.repository.AnswerRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -30,7 +30,8 @@ public class AnswerController {
 
     @POST
     public Response create(SerieAnswer answer) {
-        repository.create(answer);
+        SerieAnswer valid = new SerieAnswer(answer.getStudentId(), answer.getSerie(), answer.getAnswer());
+        repository.create(valid);
         return Response.ok().build();
     }
 }

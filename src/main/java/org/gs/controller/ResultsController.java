@@ -1,8 +1,8 @@
-package org.gs.Controller;
+package org.gs.controller;
 
-import org.gs.Model.Result;
-import org.gs.Repository.ResultsRepository;
-import org.gs.Service.CalculateResults;
+import org.gs.model.Result;
+import org.gs.repository.ResultsRepository;
+import org.gs.service.CalculateResults;
 
 import javax.inject.Inject;
 import javax.ws.rs.POST;

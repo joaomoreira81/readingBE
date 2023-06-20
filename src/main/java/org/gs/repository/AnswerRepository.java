@@ -1,7 +1,7 @@
-package org.gs.Repository;
+package org.gs.repository;
 
 import io.quarkus.mongodb.panache.PanacheMongoRepository;
-import org.gs.Model.SerieAnswer;
+import org.gs.model.SerieAnswer;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
